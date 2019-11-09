@@ -1,0 +1,54 @@
+/* body {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+} */
+
+
+/*  设置.body-1 是为了页面整体右移，让文字和左边有距离 */
+
+.body-1 {
+    padding-left: 10px;
+    border: 1px solid orange;
+}
+
+span {
+    font-weight: bold;
+}
+
+.phone,
+.email,
+.person-web {
+    width: 20%;
+}
+
+.phone {
+    float: left;
+    background-color: aqua
+    /* p 是块级元素，宽度不会刚好包含文字，而是默认情况下宽度是父元素的 100%， 若 人为设置百分比宽度，就按设置的宽度来 */
+}
+
+.email {
+    float: left;
+    margin-left: 20px;
+    background-color: bisque;
+}
+
+.person-web {
+    float: left;
+    margin-left: 20px;
+    background-color: aquamarine;
+}
+
+.clear {
+    clear: both;
+}
+
+.tech-ability,
+.compre-ability,
+.bachelor,
+.postgraduate,
+.component,
+.doc {
+    margin-top: 0;
+}

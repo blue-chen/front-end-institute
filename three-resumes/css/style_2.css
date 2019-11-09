@@ -1,0 +1,88 @@
+html {
+    background-color: #f1f1f1;
+}
+
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    /* 框阴影，第一个设置右下角的阴影，第二个设置左上角的阴影，这样就可以设置四周的阴影了，营造一种悬浮的视觉 */
+    box-shadow: 2px 2px 10px gray, -2px -2px 10px gray;
+    border: 1px solid orange;
+}
+
+.body-1 {
+    overflow: auto;
+    background-color: dodgerblue;
+}
+
+.title {
+    float: left;
+    width: 20%;
+    /* 文字水平居中 */
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+    line-height: 5;
+}
+
+.details {
+    float: right;
+    width: 80%;
+    /* margin-left: 3%; */
+    background-color: #ffffff;
+}
+
+.margin-left {
+    /* 左外边距设置过大，会导致子元素的宽度不够，导致内容换行 */
+    margin-left: 3%;
+    border: 1px solid red;
+}
+
+span {
+    font-weight: bold;
+}
+
+
+/* .phone,
+.email,
+.person-web {
+    
+    width: 25%;
+} */
+
+.phone {
+    float: left;
+    background-color: aqua;
+    /* 宽度是父元素 details 的百分比 */
+    width: 25%;
+    /* p 是块级元素，宽度不会刚好包含文字，而是默认情况下宽度是父元素的 100%， 若 人为设置百分比宽度，就按设置的宽度来 */
+}
+
+.email {
+    float: left;
+    margin-left: 20px;
+    background-color: bisque;
+    width: 40%;
+}
+
+.person-web {
+    float: left;
+    margin-left: 20px;
+    background-color: aquamarine;
+    width: 25%;
+}
+
+.clear {
+    clear: both;
+}
+
+.tech-ability,
+.compre-ability,
+.bachelor,
+.postgraduate,
+.component,
+.doc {
+    margin-top: 0;
+}

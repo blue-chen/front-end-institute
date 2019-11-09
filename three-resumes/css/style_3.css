@@ -1,0 +1,150 @@
+html {
+    background-color: #f1f1f1;
+}
+
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    /* background-color: #c8c7cc; */
+    /* 框阴影，第一个设置右下角的阴影，第二个设置左上角的阴影，这样就可以设置四周的阴影了，营造一种悬浮的视觉 */
+    box-shadow: 2px 2px 10px gray, -2px -2px 10px gray;
+    /* border: 1px solid orange; */
+    background-color: #ffffff;
+    margin-top: 70px;
+}
+
+
+/* .margin-left {
+    overflow: hidden;
+} */
+
+.title {
+    padding-left: 20px;
+    color: #ffffff;
+    background-color: #999999;
+    line-height: 2.5;
+    height: 80px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.offer-bottom-border {
+    border-bottom: 2px solid #f1f1f1;
+    /* 一般浮动元素的父元素要设置 overflow: hidden; 
+    这样才有正常盒模型的边框包住内容，才能设置正常的边框 */
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+
+.base-info,
+.contact,
+.ability,
+.edu,
+.project {
+    width: 13%;
+    /* display: inline-block; */
+    height: 100px;
+    float: left;
+    padding-left: 20px;
+    /* text-align: center; */
+    background-color: #c8c7cc;
+    /* font-size: 16px; */
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 4em;
+}
+
+.base-infos,
+.contact-ways,
+.ability-details,
+.edu-experiences,
+.project-experiences {
+    float: left;
+    width: 80%;
+    /* background-color: aqua; */
+    height: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* overflow: hidden; */
+}
+
+
+/* 设置详细信息部分的左外边距，让详细信息部分整体右移一些距离，不和左边的标题紧贴 */
+
+.offer-margin-left {
+    margin-left: 2%;
+}
+
+span {
+    font-weight: bold;
+}
+
+.name,
+.phone {
+    float: left;
+    width: 25%;
+    /* background-color: antiquewhite; */
+}
+
+.gender {
+    float: left;
+    width: 20%;
+    margin-left: 20px;
+}
+
+.apply-job {
+    float: left;
+    width: 45%;
+    margin-left: 20px;
+}
+
+.email {
+    float: left;
+    width: 35%;
+    margin-left: 20px;
+}
+
+.person-web {
+    float: left;
+    width: 20%;
+    margin-left: 20px;
+}
+
+.clear-1 {
+    clear: both;
+}
+
+.tech-ability,
+.compre-ability,
+.bachelor,
+.postgraduate,
+.component,
+.doc {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.part-left {
+    display: block;
+    float: left;
+    margin-top: 10px;
+}
+
+.tech-ability,
+.bachelor,
+.component {
+    float: left;
+    margin-top: 10px;
+}
+
+.part-left-1 {
+    display: block;
+    float: left;
+}
+
+.compre-ability,
+.postgraduate,
+.doc {
+    float: left;
+}
