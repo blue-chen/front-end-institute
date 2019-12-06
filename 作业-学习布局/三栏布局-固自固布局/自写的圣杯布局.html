@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>自写的圣杯布局</title>
+    <link href="" rel="stylesheet">
+    <style>
+        .header {
+            width: 100%;
+            height: 30px;
+            background: red;
+            /* float: left; */
+        }
+        
+        .content {
+            overflow: hidden;
+            /* 容器设置了左右的填充，是为了作为两侧的视觉空间，将来放置两侧的栏目，这两个填充的宽度恰好和两侧的宽度大小一样 */
+            padding: 0 100px;
+            background-color: beige;
+        }
+        
+        .footer {
+            width: 100%;
+            height: 30px;
+            background: red;
+        }
+        
+        .middle {
+            /* 这个 width ：100% 是父容器内容区域的100%，父元素设置padding，border之后剩下的宽度 */
+            width: 100%;
+            float: left;
+            height: 80px;
+            background: green;
+        }
+        
+        .left {
+            /* left 侧在使用float布局后，再使用相对布局，让自己相对float布局的位置向左移动 100px，占据content容器左填充的位置 ，
+             * 再使用负边距  margin-left: -100%;让自己直接上移一行，这样完成了左侧的布局*/
+            position: relative;
+            width: 100px;
+            float: left;
+            left: -100px;
+            height: 80px;
+            margin-left: -100%;
+            background: yellow;
+        }
+        
+        .right {
+            /*  right 侧 先使用float布局，在left 侧的margin-left:-100%使它上移一行后，right向左移占据left原先位置。再使用负边距margin-left: -100px，
+            移动到上一行（内容区域）的右边，最后使用相对布局，右移100px到右填充区域*/
+            position: relative;
+            width: 100px;
+            float: left;
+            /* left: 100px 等于 right：-100px ，都是向右 100px*/
+            left: 100px;
+            height: 80px;
+            margin-left: -100px;
+            background: pink
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Header</div>
+    <div class="content">
+        <div class="middle">主列</div>
+        <div class="left">左列</div>
+        <div class="right">右列</div>
+    </div>
+    <div class="footer">Footer</div>
+</body>

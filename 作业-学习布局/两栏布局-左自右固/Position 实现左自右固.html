@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Position 实现左自右固</title>
+    <style>
+        body {
+            position: relative;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+        
+        .left {
+            margin-right: 310px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 两个 div 顺序可以调换，不影响布局 -->
+    <div class="left">左侧</div>
+    <div class="right">右侧</div>
+</body>
+
+</html>

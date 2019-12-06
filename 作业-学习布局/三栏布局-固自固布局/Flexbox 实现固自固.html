@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Flexbox 实现固自固</title>
+    <style>
+        body {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+        
+        .left,
+        .right {
+            width: 300px;
+            height: 500px;
+            background-color: aquamarine;
+        }
+        
+        .main {
+            flex: 1;
+            height: 500px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 这应该是先分配左右两侧的宽度后，再分配主栏的宽度，即先把固定宽度分配，再分配flex宽度 -->
+        <div class="left">左侧</div>
+        <div class="main">主栏</div>
+        <div class="right">右侧</div>
+    </div>
+</body>
+
+</html>

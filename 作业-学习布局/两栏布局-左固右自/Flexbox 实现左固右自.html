@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Flexbox 实现左固右自</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: flex-start;
+            flex-flow: row wrap;
+        }
+        
+        .left {
+            /* left 不变成flex项 */
+            /* flex: 0 0 auto; */
+            width: 300px;
+            height: 300px;
+            background-color: beige;
+        }
+        
+        .right {
+            flex: 1;
+            height: 300px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">左侧固定宽度</div>
+        <div class="right">右侧自适应宽度</div>
+    </div>
+</body>
+
+</html>

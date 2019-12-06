@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>自身浮动法固自固布局</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+        
+        #left,
+        #right {
+            width: 200px;
+            height: 100%;
+            background-color: aquamarine;
+        }
+        
+        #left {
+            float: left;
+        }
+        
+        #right {
+            float: right;
+            /* clear: both; */
+        }
+        
+        #main {
+            height: 100%;
+            margin: 0 210px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="left"></div>
+    <!-- 左侧浮动后，.right 受到浮动影响，上移一行，然后自己本身向右浮动，就和左侧并列在两边。
+        要记得浮动元素是脱离文档流的，不受其他元素的margin的限制，可以无限制浮动，
+        * 所以第三个元素就是main 会上移到第一行 -->
+    <div id="right"></div>
+    <!-- 前两个div 顺序可以变，但主栏 main一定要放在第三个，不然不能形成三栏布局 ，这个布局没有用到bfc，因为main人为设置了左右边距，让main水平居中，为左右两栏放置提供视觉空间-->
+    <div id="main"></div>
+
+</body>
+
+</html>

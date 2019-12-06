@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>自写的双飞翼布局</title>
+    <link href="" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .header,
+        .footer {
+            text-align: center;
+            line-height: 100px;
+            height: 100px;
+            background: rgba(29, 27, 27, 0.726);
+        }
+        
+        .container {
+            /* 容器的子元素都是浮动元素，要用 overflow: hidden; 清除浮动 */
+            overflow: hidden;
+            /* 人为设置高度，不用 “ 内容决定高度” 模式 */
+            height: 500px;
+            background-color: bisque;
+        }
+        
+        .main {
+            width: 100%;
+            background-color: aqua;
+            height: 200px;
+            float: left;
+            /* 如果直接在主列main设置左边界，左子列不会占用左边距，而是也向右移动，始终刚好在主列的左边 */
+            /* margin-left: 300px; */
+        }
+        
+        .main-wrap {
+            /* 父元素main占据整行的宽度后，其唯一的子元素 main-wrap 通过设置 左右边距达到居中的效果，为左右两侧让出视觉空间*/
+            margin-left: 320px;
+            margin-right: 320px;
+            background-color: red;
+            height: 200px;
+        }
+        
+        .sub {
+            /* sub 浮动布局后，再使用负边距  margin-left: -100%; 让sub 直接上移一行，与主列平行。前提是main是float元素才行*/
+            width: 290px;
+            background-color: orange;
+            float: left;
+            margin-left: -100%;
+            height: 200px;
+        }
+        
+        .extra {
+            width: 290px;
+            background-color: greenyellow;
+            float: left;
+            /* 先使用浮动布局 ，等sub 上移一行后，左负边距让extra回到上一行，覆盖main元素的右边，占据main-wrap设置左右边距而让出的视觉空间 */
+            margin-left: -290px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">#header</div>
+    <div class="container">
+        <div class="main">
+            <div class="main-wrap">主列。</div>
+        </div>
+
+        <div class="sub">子列</div>
+        <div class="extra">附加列</div>
+    </div>
+
+    <div class="footer">#footer</div>
+
+</body>
+
+</html>

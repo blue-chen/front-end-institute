@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Float 实现固固自</title>
+    <style>
+        body {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .left,
+        .main {
+            float: left;
+            height: 500px;
+        }
+        
+        .left {
+            width: 300px;
+            background-color: antiquewhite;
+        }
+        
+        .main {
+            width: 600px;
+            background-color: aquamarine;
+        }
+        
+        .right {
+            /* 设置右侧为bfc */
+            overflow: hidden;
+            height: 500px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">左侧固定</div>
+    <div class="main">主栏固定</div>
+    <div class="right">右侧自适应</div>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+        /* ********* header css *********** */
+        
+        header {
+            width: 100%;
+            height: 60px;
+            background-color: rgba(10, 10, 10, 0.836);
+            color: white;
+        }
+        
+        .center {
+            width: 960px;
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap;
+        }
+        
+        .logo {
+            flex: 1;
+            /* background-color: antiquewhite; */
+            color: white;
+            line-height: 60px;
+            /* vertical-align: center; 这个只对行内元素生效，不能用于块级元素 */
+            height: 60px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .mini-nav {
+            flex: 1;
+            display: flex;
+            /* background-color: aquamarine; */
+            height: 60px;
+            margin-top: 0;
+            /* 取消 li 的装饰 */
+            list-style-type: none;
+            /* 所有flex项从在容器上面排列 */
+            align-items: flex-start;
+            /* 所有flex项从右边开始排列 */
+            justify-content: flex-end;
+        }
+        
+        .mini-nav li {
+            /* 不设置flex：1，即不让flex项平分容器剩余空间，不让flex项均匀有间隔地放置 ，flex: none;让flex项紧密排列在一起*/
+            flex: none;
+            margin-right: 8px;
+            /* 这里li只包裹了元素a，不能在这里越级 设置 元素a 的字体颜色，只能对元素a和自身进行一些样式设置 */
+            /* margin-top: 0; */
+        }
+        
+        .mini-nav li a {
+            display: block;
+            color: white;
+            font-size: 10px;
+            margin-top: 0;
+            font-size: 12px;
+        }
+        /* ********* banner css *********** */
+        
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            background-color: rgb(145, 216, 78);
+        }
+        
+        .banner-item {
+            /* 用绝对定位让 ul 放置在容器右下角，容器里面再用flex布局 */
+            position: absolute;
+            bottom: 5px;
+            right: 150px;
+            display: flex;
+            list-style-type: none;
+            /* background-color: blue; */
+        }
+        
+        .banner-item li {
+            /* display: block; */
+            flex: none;
+            margin-right: 10px;
+            border: 1px solid black;
+            padding: 0 5px;
+            background-color: rgb(209, 230, 191);
+        }
+        /* ********* nav css *********** */
+        
+        .nav {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .nav ul {
+            width: 960px;
+            margin: 0 auto;
+            display: flex;
+            list-style-type: none;
+        }
+        
+        .nav ul li {
+            flex: none;
+            padding: 10px 20px;
+            /* border: 1px solid black; */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: #c8c7cc;
+        }
+        
+        .nav ul li:nth-of-type(1) {
+            background-color: rgb(233, 224, 224);
+        }
+        
+        hr {
+            /* 设置线条的颜色 */
+            background-color: #c8c7cc;
+            /* 高度设置线条的粗细 */
+            height: 1px;
+            width: 100%;
+            border: none
+        }
+        /* ********* main css *********** */
+        
+        main div {
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        main {
+            width: 960px;
+            margin: 0 auto;
+            display: flex;
+            /* 宽度不够时后面的元素自动换行 */
+            flex-flow: row wrap;
+            /* background-color: aquamarine; */
+            margin-top: 10px;
+            /* 两端的flex 项紧贴父容器 */
+            justify-content: space-between;
+        }
+        
+        main div {
+            padding: 80px;
+            border: 1px solid black;
+            height: 150px;
+        }
+        /* ********* first row css *********** */
+        
+        .one,
+        .two,
+        .three {
+            width: 32.5%;
+            /* 使用flex属性营造不了第一行只有三个div 效果，只能强制使用 width 属性 */
+            /* flex: 1; */
+        }
+        
+        .two {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        /* ********* second row  css *********** */
+        
+        .four,
+        .five,
+        .six,
+        .seven {
+            flex: 1;
+            margin-top: 10px;
+        }
+        
+        .four,
+        .five,
+        .six {
+            margin-right: 10px;
+        }
+        /* ********* third row  css *********** */
+        
+        .eight,
+        .nine,
+        .ten {
+            flex: 1;
+            margin-top: 10px;
+        }
+        
+        .nine {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        /* ********* footer  css *********** */
+        
+        footer {
+            width: 100%;
+            background-color: rgba(63, 57, 57, 0.479);
+            height: 80px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        /* footer div {
+            background-color: aquamarine;
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        } */
+        
+        footer a {
+            display: inline-block;
+            margin-top: 10px;
+            /* background-color: bisque; */
+            text-decoration: none;
+            color: white;
+        }

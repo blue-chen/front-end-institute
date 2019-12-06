@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>绝对定位法实现固自固布局</title>
+    <style type="text/css">
+        html {
+            /* 为什么HTML一定要设置高度为 100%，main 才显示出来？ */
+            height: 100%;
+            /* background-color: aqua; */
+            /* margin: 0; */
+        }
+        
+        body {
+            /*  margin: 0;让body和HTML的间距为 */
+            margin: 0;
+            height: 100%;
+            background-color: red;
+            /* overflow: hidden; */
+        }
+        
+        #left,
+        #right {
+            /* 这里绝对定位元素相对HTML，即相对浏览器窗口布局 */
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 200px;
+        }
+        
+        #left {
+            left: 0;
+            background-color: #a0b3d6;
+        }
+        
+        #right {
+            right: 0;
+            background-color: #a0b3d6;
+        }
+        
+        #main {
+            /* 这里main不用bfc（bfc 一般跟 float 搭配）来自适应，而是设置了左右边界让自己居中，为左右两栏让出视觉空间，因为左右两栏都是绝对定位，脱离文档流，
+             * 不会干扰到main */
+            margin: 0 210px;
+            /* 设置 margin-top: 10px; 会发生 margin 穿透，main和body之间没有间距，反而body和HTML有间距了*/
+            /* margin-top: 10px; */
+            /* margin-left: 210px;
+            margin-right: 210px; */
+            background-color: #ffe6b8;
+            /* background: red; */
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 这里三个div的顺序可以调换 -->
+    <div id="left"></div>
+    <div id="main"></div>
+    <div id="right"></div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Float 实现左固右自</title>
+    <style>
+        body {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .right {
+            float: right;
+            height: 200px;
+            width: 300px;
+            background-color: antiquewhite;
+        }
+        
+        .left {
+            overflow: hidden;
+            height: 200px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 源顺序上右侧先写，再写左侧，右侧浮动，然后左侧bfc，排在左边 -->
+    <div class="right">右侧</div>
+    <div class="left">左侧</div>
+
+</body>
+
+</html>
