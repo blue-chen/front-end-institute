@@ -8,7 +8,7 @@
         
         .div1 {
             background: url("../images/组\ 1.png");
-            background-size: 100% 100%;
+/*             background-size: 100% 100%; */
             /* background-color: aqua; */
             overflow: hidden;
             /*防止h1的margin穿透*/
@@ -159,7 +159,7 @@
         
         .div3 {
             background: url("../images/Background.png");
-            background-size: 100% 100%;
+/*             background-size: 100% 100%; */
             color: #fff;
             /*这里设置高度，因为图片浮动了，容器的高度最高只能被浮动图片撑开，要想让图片垂直居中，就要设置容器的高度更大*/
             height: 700px;
