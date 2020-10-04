@@ -7,7 +7,7 @@
         }
         
         .div1 {
-            background-image: url("bg1.png");
+            background-image: url("../bg1.png");
 /*             background-size: 100% 100%; */
             /* background-color: aqua; */
             overflow: hidden;
@@ -158,8 +158,8 @@
         /*********div3**********/
         
         .div3 {
-           background-image: url("bg2.png");
-/*             background-size: 100% 100%; */
+           background-image: url("../bg2.png");
+            background-size: 100% 100%;
             color: #fff;
             /*这里设置高度，因为图片浮动了，容器的高度最高只能被浮动图片撑开，要想让图片垂直居中，就要设置容器的高度更大*/
             height: 700px;
