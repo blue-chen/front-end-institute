@@ -55,7 +55,7 @@
         }
         
         .form-signup {
-            width: 50%;
+            width: 55%;
             margin: 0 auto;
             margin-bottom: 35px;
         }
@@ -111,9 +111,14 @@
             flex-flow: row wrap;
         }
         
+        .icons {
+            /* width: 45%; */
+            flex: 1 45%;
+        }
+        
         .div2-1,
         .div2-3 {
-            margin-right: 80px;
+            margin-right: 60px;
         }
         
         .icons img {
@@ -133,13 +138,13 @@
         }
         
         .div2-1 img {
-            margin-right: 30px;
-            margin-left: 10px;
+            margin-right: 32px;
+            margin-left: 8px;
         }
         
         .div2-2 img {
             margin-right: 25px;
-            margin-left: 10px;
+            margin-left: 4px;
         }
         
         #four-divs p {
@@ -176,7 +181,7 @@
         .smart-car {
             /*容器变成bfc元素,主要是防止p的margin穿透，和浮动img并列通过相对定位来实现了，所以这不是设置bfc的根本目的*/
             overflow: hidden;
-            width: 23%;
+            width: 25%;
             /* height: 500px; */
             /*文字描述部分用相对定位移到中间*/
             position: relative;
@@ -199,7 +204,7 @@
             color: #fff;
             border: 0.1px solid #fff;
             padding: 10px;
-            /* 标签变成行内块元素，可以避免标签是内联元素时设置padding推不开底部的父元素边框的问题 */
+            /* 标签变成行内块元素，可以避免a标签是内联元素时设置padding推不开底部的父元素边框的问题 */
             display: inline-block;
         }
         /* .first-a {
@@ -241,6 +246,7 @@
         .div4-1 div {
             width: 25%;
             margin-right: 73px;
+            flex: 1;
         }
         
         .div4-1 img {
@@ -269,7 +275,7 @@
             float: left;
             width: 500px;
             height: 308px;
-            margin-right: 90px;
+            margin-right: 70px;
         }
         
         .div5-1 {
@@ -318,18 +324,24 @@
             /* background-color: aquamarine; */
             margin-top: 50px;
             overflow: hidden;
+            display: flex;
+            flex-flow: row wrap;
         }
         
         .four-imgs img {
-            width: 430px;
-            height: 311px;
+            /* width: 400px;
+            height: 289px; */
+            /* 很多图片用flex布局的话，好像就只用考虑给的宽度就行，高度的话系统自适应，不用特地去按比例计算图片缩小后的宽和高 */
+            width: 45%;
+            flex: 1;
+            margin-right: 10px;
+            margin-bottom: 10px;
         }
         /* .img1 {
          margin-right: 60px; 
         margin-bottom: 60px;
     } */
-        
-        .img1 {
+        /* .img1 {
             float: left;
             margin-bottom: 30px;
         }
@@ -345,7 +357,7 @@
         
         .img4 {
             float: right;
-        }
+        } */
         
         .four-imgs img:hover {
             filter: brightness(50%);
@@ -476,3 +488,4 @@
         .six-img a {
             display: inline;
         }
+
