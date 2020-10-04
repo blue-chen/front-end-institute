@@ -1,0 +1,478 @@
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            /* background-color: green; */
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        .div1 {
+            background: url("../images/组\ 1.png");
+            background-size: 100% 100%;
+            /* background-color: aqua; */
+            overflow: hidden;
+            /*防止h1的margin穿透*/
+            color: white;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 150px;
+            font-size: 3em;
+        }
+        
+        .p-china {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 0;
+        }
+        
+        #pchina {
+            margin-top: 0px;
+            /*消除上边距，营造紧贴的效果*/
+        }
+        
+        .div1-1 {
+            margin: 0 auto;
+            border: 0.05px solid rgba(255, 255, 255, 0.733);
+            width: 60%;
+            margin-top: 80px;
+            margin-bottom: 130px;
+        }
+        
+        .div1-1 p {
+            text-align: center;
+        }
+        
+        .div1-1 p:nth-child(1) {
+            font-size: 1.3em;
+            margin-top: 40px;
+            margin-bottom: 0;
+        }
+        
+        .div1-1 p:nth-child(2) {
+            margin-top: 8px;
+        }
+        
+        .form-signup {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 35px;
+        }
+        
+        .form-signup input {
+            margin-right: 10px;
+            height: 30px;
+            background-color: transparent;
+            border: 0.3px solid rgba(255, 255, 255, 0.733);
+            color: white;
+            /*设置输入到输入框的文字的颜色*/
+        }
+        
+        .form-signup input::-webkit-input-placeholder {
+            color: rgb(255, 255, 255);
+        }
+        
+        button {
+            background-color: #fff;
+            border: 1px solid #fff;
+            height: 33px;
+        }
+        /***************div2***********************/
+        
+        .div2 {
+            width: 60%;
+            margin: 0 auto;
+            /* background-color: aquamarine; */
+            overflow: hidden;
+        }
+        
+        .div2>p {
+            text-align: center;
+            font-size: 1.7em;
+            /* 要想让p和p之间没有间隔，就要设置p的上下margin都为0，光设置下margin为0 还不行，
+    因为第二个p的上margin依然还存在，这样上下两个p依然还有间隔*/
+            margin-bottom: 0px;
+            margin-top: 0;
+        }
+        
+        .div2 p:nth-child(1) {
+            /*这两个margin是为了重新覆盖上面的margin的设置，使第一个p的上下margin不为0*/
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        /* 4个icon区域用了flex布局，每个icon和右边的描述文字用了“浮动+bfc”布局，使得icon和文字描述并排布局 */
+        
+        #four-divs {
+            margin-top: 40px;
+            /* background-color: orange; */
+            display: flex;
+            flex-flow: row wrap;
+        }
+        
+        .div2-1,
+        .div2-3 {
+            margin-right: 80px;
+        }
+        
+        .icons img {
+            float: left;
+            /*相比bfc元素设置左外边距，浮动元素设置右外边距可以更容易产生和bfc元素的间隔*/
+            margin-right: 20px;
+        }
+        
+        .description-on-icon {
+            /* img旁边的文字描述设置成bfc有两个好处：一是和浮动的img分隔开，二是放置h2的margin穿透 */
+            overflow: hidden;
+            /* margin-left: 20px; */
+        }
+        
+        .description-on-icon h2 {
+            margin-top: 0;
+        }
+        
+        .div2-1 img {
+            margin-right: 30px;
+            margin-left: 10px;
+        }
+        
+        .div2-2 img {
+            margin-right: 25px;
+            margin-left: 10px;
+        }
+        
+        #four-divs p {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        
+        .icons {
+            margin-bottom: 50px;
+        }
+        /*********div3**********/
+        
+        .div3 {
+            background: url("../images/Background.png");
+            background-size: 100% 100%;
+            color: #fff;
+            /*这里设置高度，因为图片浮动了，容器的高度最高只能被浮动图片撑开，要想让图片垂直居中，就要设置容器的高度更大*/
+            height: 700px;
+            /* background-color: aquamarine; */
+            position: relative;
+        }
+        
+        .div3 img {
+            float: right;
+            margin-top: 80px;
+        }
+        
+        .ipad-border {
+            position: absolute;
+            right: 0;
+            top: -27px;
+        }
+        
+        .smart-car {
+            /*容器变成bfc元素,主要是防止p的margin穿透，和浮动img并列通过相对定位来实现了，所以这不是设置bfc的根本目的*/
+            overflow: hidden;
+            width: 23%;
+            /* height: 500px; */
+            /*文字描述部分用相对定位移到中间*/
+            position: relative;
+            left: 300px;
+            top: 120px;
+            /* background-color: beige; */
+        }
+        
+        .smart-car p:nth-child(1) {
+            font-size: 2.2em;
+        }
+        
+        .smart-car p:nth-child(2) {
+            margin-bottom: 50px;
+        }
+        
+        .smart-car a {
+            /*这个选择器的权重是11*/
+            text-decoration: none;
+            color: #fff;
+            border: 0.1px solid #fff;
+            padding: 10px;
+            /* 标签变成行内块元素，可以避免标签是内联元素时设置padding推不开底部的父元素边框的问题 */
+            display: inline-block;
+        }
+        /* .first-a {
+        color: greenyellow;
+    } */
+        /*这个选择器的权重是10，虽然都选中了同一个a，但上面的权重是11，所以无法覆盖链接a的字体颜色样式*/
+        
+        #first-a {
+            margin-right: 14px;
+        }
+        
+        .smart-car a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        /* *******div4********** */
+        
+        .div4 {
+            overflow: hidden;
+            /* background-color: goldenrod; */
+        }
+        
+        .div4>p {
+            font-size: 2em;
+            margin-top: 90px;
+            text-align: center;
+        }
+        
+        .div4-1 {
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 70px;
+            display: flex;
+            flex-flow: row wrap;
+            /* background-color: yellowgreen; */
+            margin-bottom: 50px;
+        }
+        
+        .div4-1 div {
+            width: 25%;
+            margin-right: 73px;
+        }
+        
+        .div4-1 img {
+            margin-left: 40px;
+        }
+        
+        #icon-hero {
+            margin-left: 70px;
+        }
+        
+        .dividing-line {
+            background-color: rgba(190, 188, 188, 0.301);
+            height: 2px;
+            border: none;
+        }
+        /* ************div5*************** */
+        
+        .div5 {
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 60px;
+            /* background-color: aquamarine; */
+        }
+        
+        .img-green-leaf {
+            float: left;
+            width: 500px;
+            height: 308px;
+            margin-right: 90px;
+        }
+        
+        .div5-1 {
+            /* 设置bfc是为了防止margin穿透 */
+            overflow: hidden;
+        }
+        
+        .div5-2 {
+            /* 设置成bfc是为了分隔浮动img和文字 */
+            overflow: hidden;
+            width: 30%;
+        }
+        
+        .img-blue-bird {
+            float: right;
+            width: 500px;
+            height: 308px;
+        }
+        
+        .for-give-mar-top {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .div5-2 h3 {
+            margin-top: 50px;
+        }
+        /* **********div6************ */
+        
+        .div6 {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .crew {
+            font-size: 2em;
+        }
+        
+        .div6 p {
+            text-align: center;
+        }
+        
+        .four-imgs {
+            width: 60%;
+            margin: 0 auto;
+            /* background-color: aquamarine; */
+            margin-top: 50px;
+            overflow: hidden;
+        }
+        
+        .four-imgs img {
+            width: 430px;
+            height: 311px;
+        }
+        /* .img1 {
+         margin-right: 60px; 
+        margin-bottom: 60px;
+    } */
+        
+        .img1 {
+            float: left;
+            margin-bottom: 30px;
+        }
+        
+        .img2 {
+            float: right;
+            margin-bottom: 30px;
+        }
+        
+        .img3 {
+            float: left;
+        }
+        
+        .img4 {
+            float: right;
+        }
+        
+        .four-imgs img:hover {
+            filter: brightness(50%);
+        }
+        /* ***********div7************** */
+        
+        .div7 {
+            /* 有浮动就要设置浮动元素的父容器为bfc，因为你不知道浮动元素的高度是否是所有子元素最高的，
+            这是为了避免高度塌陷 */
+            overflow: hidden;
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            /* background-color: aquamarine; */
+        }
+        
+        .div7-1 {
+            overflow: hidden;
+            border: 1px solid rgba(190, 188, 188, 0.301);
+            /* 设置边框四个角的弧度 */
+            border-radius: 10px;
+            float: left;
+            width: 40%;
+            margin-right: 100px;
+        }
+        
+        .div7-1 p {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 2em;
+        }
+        
+        .contact-way input,
+        .contact-way textarea,
+        .contact-way button {
+            /* input 是内联元素，要让它们一行一个就要变成块元素 */
+            display: block;
+            margin: 0 auto;
+            width: 70%;
+            height: 2.5em;
+            margin-top: 2em;
+        }
+        
+        #text-area {
+            height: 8em;
+        }
+        
+        #button {
+            border: 1px solid #000;
+            background-color: #000;
+            color: #fff;
+            margin-bottom: 50px;
+        }
+        /* .contact-way input::-webkit-input-placeholder,
+        .contact-way textarea::-webkit-input-placeholder {
+            color: #000;
+        } */
+        
+        .div7-2 {
+            /* 设置成bfc，防止p的margin-top 穿透 */
+            overflow: hidden;
+            width: 40%;
+        }
+        
+        .div7-2 p:nth-child(1) {
+            font-size: 2em;
+            margin-top: 2em;
+        }
+        
+        .div7-22 img {
+            float: left;
+            margin-right: 20px;
+        }
+        
+        .div7-22 p {
+            /* 变成bfc，与左边的浮动img间隔开来 */
+            overflow: hidden;
+        }
+        
+        .div7-22 {
+            margin-top: 50px;
+        }
+        
+        #first-img {
+            /* 表示位置的icon图标因为宽度比其他两个图标小，所以设置的右margin要更大一点 */
+            margin-right: 25px;
+        }
+        /* **********div8************** */
+        
+        .div8 {
+            background-color: #000;
+            color: #fff;
+            /* 设置bfc是为了防止子元素 div8-1的margin-top 穿透 */
+            overflow: hidden;
+        }
+        
+        .div8-1 {
+            width: 70%;
+            margin: 0 auto;
+            display: flex;
+            margin-top: 50px;
+            /* overflow: hidden; */
+            margin-bottom: 50px;
+        }
+        
+        .div8-1 a {
+            display: block;
+            text-decoration: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: rgba(190, 188, 188, 0.301);
+        }
+        
+        .web-kit {
+            color: rgba(190, 188, 188, 0.301);
+        }
+        
+        .footer-four {
+            flex: 1;
+        }
+        
+        .six-img img {
+            margin-right: 15px;
+            filter: brightness(50%);
+        }
+        
+        .six-img a {
+            display: inline;
+        }
