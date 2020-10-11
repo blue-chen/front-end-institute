@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My resume</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+        
+        .resume {
+            color: black;
+        }
+        
+        .name {
+            font-weight: bold;
+            color: blueviolet;
+            background: white;
+            padding: 10px;
+            /*border-bottom-style: dashed;
+            border-bottom-width: 5px;*/
+        }
+        
+        [tt] {
+            /*属性选择器*/
+            color: aquamarine;
+            font-size: 20px;
+        }
+        
+        .app {
+            font-size: 2em;
+            /* 每个元素的font-size都继承自他们的父元素，所以在任何元素都没有显示设置 font-size的情况下，
+             <html> 元素的默认font-size：16px，所以 html 的后代元素从他们的父元素继承得到的font-size=16px，
+             这里 span 的父元素p的font-size=16px，所以 2em=32px  */
+        }
+        
+        .test {
+            font-size: 1.5em;
+            line-height: 1;
+        }
+        
+        .greet {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="resume">简历</h1>
+    <p class="name">姓名：张三</p>
+    <p title="" tt>联系方式：手机：18801383235 ，邮箱：12325348193@qq.com</p>
+    <p>学历：本科</p>
+    <p>项目经验</p>
+    <p class="test">(1)"u-gkder"校园通用服务App<br> 项目时间：2019.10-2020.06
+        <br> 项目描述：在<span class="app">"u-gkder"校园通用服务App</span> 项目中负责了软件界面设计和开发工作。
+        <br>项目中负责了软件界面设计和开发工作,当font-size等于line-height时，行距 = font-size - line-height = 0； 而当font-size大于line-height时，则会出现行距为负值，则两行重叠
+    </p>
+
+    <button>和我聊聊</button>
+    <P class="greet"></P>
+
+    <script>
+        const button = document.querySelector("button");
+        const greet = document.querySelector(".greet");
+        button.addEventListener("click", greeting);
+        button.addEventListener('click', mySkill);
+
+        const html = document.querySelector('html');
+
+        const paraSkill = document.createElement('p');
+
+        function greeting() {
+            greet.textContent = "你好，我是蓝天程！";
+        }
+
+        function mySkill() {
+            /* const html = document.querySelector('html');
+            const paraSkill = document.createElement('p'); */
+
+            paraSkill.textContent = "我想从事的工作是Web前端，目前已经基本掌握了HTML，css的用法，正在学习JavaScript。"
+            html.appendChild(paraSkill);
+
+
+
+        }
+    </script>
+</body>
+
+</html>
