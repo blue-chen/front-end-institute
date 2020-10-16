@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>dec2bin-2</title>
+</head>
+
+<body>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后的二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        const transBtn = document.getElementById('trans-btn');
+        const result = document.getElementById('result');
+        transBtn.addEventListener('click', btnClick);
+
+        function btnClick() {
+            let decNumber = document.getElementById('dec-number').value;
+            let binBit = document.getElementById('bin-bit').value;
+            dec2bin(decNumber, binBit); //在事件函数中调用其他函数，因为事件函数传不了实参
+        }
+
+        function dec2bin(decNumber, binBit) {
+            // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+            let realNumber = Number(decNumber);
+            let realBinBit = Number(binBit);
+            let remainder = ""; //装余数的字符串
+            let convertRemainder = ""; // 装二进制数的字符串
+            let strZero = "";
+            if (realNumber < 0) {
+                result.textContent = "输入必须为一个非负整数";
+            } else if (realNumber === 0) {
+                result.textContent = "二进制为：" + realNumber;
+            } else {
+                while (realNumber > 0) {
+                    let temp = realNumber % 2;
+                    console.log(temp);
+                    remainder += temp; // 字符串加数字的结果是字符串
+                    realNumber = (realNumber - temp) / 2; // 减去余数再除以2，就得到中途的商了。不能直接除
+                }
+                for (let i = remainder.length - 1; i >= 0; i--) {
+                    convertRemainder += remainder[i]; //通过逆操作，把字符串的元素逆向排列得到二进制数字符串
+                }
+                if (realBinBit > convertRemainder.length) { // 当要求显示的二进制位数大于算出的二进制数位数，高位补0
+                    let temp = realBinBit - convertRemainder.length;
+                    for (let i = 0; i < temp; i++) {
+                        strZero += 0; // 设置在二进制高位补0的个数
+                    }
+                    convertRemainder = strZero + convertRemainder;
+                }
+                result.textContent = "二进制为：" + convertRemainder;
+
+            }
+        }
+
+        // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+        // 新的需求是，转化显示后的二进制数为bin-bit中输入的数字宽度，例如
+        // dec-number为5，bin-bit为5，则转化后数字为00101
+        // 如果bin-bit小于转化后的二进制本身位数，则使用原本的位数，如dec-number为5，bin-bit为2，依然输出101，但同时在console中报个错
+        // Some coding
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>3的游戏</title>
+
+</head>
+
+<body>
+    <!-- 3的小游戏，练习使用循环和条件语句，实现如下需求：
+
+        从1到100，以此在console输出各数字，但是，当数字为3的倍数或者含有3的时候，输出“PA”
+        比如：1,2,PA,4,5,PA,……,11,PA,PA,14,PA…… -->
+    <script>
+        let temp;
+        //let flag;
+        let strNum = "";
+        for (let i = 1; i <= 100; i++) {
+            //flag = -2;
+            temp = i % 3;
+            strNum = i.toString();
+            //flag = strNum.indexOf('3');
+            //这里不能用flag等于3的下标来确定有3，因为3的下标可能有多个值，找到就返回3的下标(有多个3是返回所有3的下标吗)，下标可能是0，所以不能用0作为flag的值，找不到3的就返回 -1
+            if (temp === 0 || strNum.indexOf('3') !== -1) { //因为找不到3的就返回 -1，那不等于 -1的不就找到3了吗， 输出 PA
+                console.log('PA');
+            } else {
+                console.log(i);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>九九乘法</title>
+    <link href="nine-nine.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <table>
+        <caption>九九乘法表</caption>
+        <!-- 第一行有一个单元格，第二行有2个单元格，第3行有3个单元格 ，
+            这次不用预先内置空的 <td> 标签的方式来实现乘法表，而是完全动态创建 <td> 来实现，
+            原因是如果用内置的标签的话，就得给它们设置选择器，但选择器的名字是写死的，
+            在给选择器（实际是元素）关联乘法表达式难度很大，这是死板的方式。
+            用动态创建 <tr>,<td> 标签的方式去关联乘法表达式更巧妙-->
+        <!-- <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> -->
+    </table>
+    <script>
+        //在控制台输出九九乘法表的所有表达式
+        let expression = "";
+        for (let i = 1; i <= 9; i++) {
+
+            for (let j = i; j <= 9; j++) { // j 的取值从 i 开始
+                let result = i * j;
+                expression = expression + i + "*" + j + "=" + result;
+                console.log(expression);
+                expression = ""; //因为下一轮要显示新的乘法表达式，所以字符串最后要清空，为下一次接受赋值做准备
+            }
+        }
+
+        // 在网页中使用table来实现一个九九乘法表
+        const myTable = document.querySelector('table');
+        let tableExpression = "";
+
+        for (let i = 1; i <= 9; i++) { // 最外面的for（）循环每次创建一行 <tr>,然后在行里面添加单元格，第一行有一个格，第二行有2格，....
+            const myRow = document.createElement('tr');
+
+            for (let j = 1; j <= i; j++) { // 为每行创建单元格，i 代表第i行，j代表该行创建单元格的个数，乘法表第一行有1格，第二行有2格，所以j 格的个数 <= i，最大只能取 i值
+                const td = document.createElement('td');
+                let temp = j * i;
+                tableExpression = tableExpression + j + "*" + i + "=" + temp;
+                td.textContent = tableExpression; // 添加字符串作为单元格的文本内容
+                myRow.appendChild(td); // 添加一个单元格到该行中
+                tableExpression = ""; //字符串要清空，因为下一次又要用
+            }
+            myTable.appendChild(myRow); //添加一行单元格到table中
+        }
+    </script>
+</body>
+
+</html>
