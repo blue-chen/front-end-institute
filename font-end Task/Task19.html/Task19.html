@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>用dom查找元素</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>CSS</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+    </div>
+
+    <button onclick="getAllListItem()">输出页面所有li标签</button>
+    <button onclick="findAllHtmlSpanInOneSection()">输出section下所有span中内容为HTML的span标签</button>
+    <button onclick="findListItem()"> 返回某个section下span内容为spanCont的LI标签</button>
+    <button onclick="getActiveLinkContent()">返回section下，class为active的链接中包含的文字内容</button>
+
+    <p id="demo"></p>
+    <script>
+        function getAllListItem() {
+            // 返回页面中所有li标签
+            let arrayLi = document.getElementsByTagName("li");
+            let strLi = "";
+            for (let i = 0; i < arrayLi.length; i++) {
+                strLi = strLi + arrayLi[i].nodeName + "<br>"; //因为字符串strLi要累加，要在等号右边有 strLi，不然就变成右边的字符串覆盖左边的strLi字符串了
+            }
+            document.getElementById("demo").innerHTML = strLi;
+        }
+
+        function findAllHtmlSpanInOneSection() {
+            // 返回某个section下所有span中内容为HTML的span标签  news-top
+            let sectionId = "news-normal";
+            callFindAllHtmlSpanInOneSection(sectionId);
+        }
+
+        function callFindAllHtmlSpanInOneSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const spans = section.getElementsByTagName("span");
+            let strSpan = "";
+            for (let i = 0; i < spans.length; i++) {
+                if (spans[i].innerHTML === "HTML") {
+                    strSpan = strSpan + spans[i].nodeName + "<br>";
+                }
+            }
+            document.getElementById("demo").innerHTML = strSpan;
+        }
+
+        function findListItem() {
+            // 返回某个section下，所有所包含span内容为spanCont(全部内容)的LI标签,思路是先找到内容为spanCont的 span，再找这些span的父节点 li标签
+            let sectionId = "news-top",
+                spanCont = "JS";
+            callfindListItem(sectionId, spanCont);
+        }
+
+        function callfindListItem(sectionId, spanCont) {
+            const section = document.getElementById(sectionId);
+            const spans = section.getElementsByTagName('span'); // 在 section元素中查找元素，而不是在document对象中找，查找范围更小了
+            let strSpan = "";
+            for (let i = 0; i < spans.length; i++) {
+                if (spans[i].innerHTML === spanCont) {
+                    strSpan = strSpan + spans[i].parentNode.nodeName + "<br>";
+                }
+            }
+            document.getElementById("demo").innerHTML = strSpan;
+        }
+
+
+        function getActiveLinkContent() {
+            // 返回某个section下，class为active的链接中包含的文字内容
+            let sectionId = "news-normal";
+
+            callgetActiveLinkContent(sectionId);
+        }
+
+        function callgetActiveLinkContent(sectionId) {
+            const section = document.getElementById(sectionId);
+            const links = section.querySelectorAll(".active");
+            let strLinks = "";
+            for (let i = 0; i < links.length; i++) {
+                strLinks = strLinks + links[i].innerHTML + "<br>";
+            }
+            document.getElementById("demo").innerHTML = strLinks;
+        }
+    </script>
+</body>
+
+</html>
