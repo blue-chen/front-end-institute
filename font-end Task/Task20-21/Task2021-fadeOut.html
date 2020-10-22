@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>淡出动画-可重复点击</title>
+
+
+</head>
+
+<body>
+    <!-- 点击按钮时，开始改变 fade-obj 的透明度，开始一个淡出（逐渐消失）动画，直到透明度为0
+        在动画过程中，按钮的状态变为不可点击
+        在动画结束后，按钮状态恢复，且文字变成“淡入”
+        在 按钮显示 淡入 的状态时，点击按钮，开始一个“淡入”（逐渐出现）的动画，和上面类似按钮不可点，直到透明度完全不透明
+        淡入动画结束后，按钮文字变为“淡出” -->
+    <div id="fade-obj" style="width:300px;height:300px;background:rgb(40, 202, 49)"></div>
+    <button id="fade-btn">淡出</button>
+
+    <script>
+        const fadeBtnOUt = document.getElementById("fade-btn");
+        const fadeObj = document.getElementById("fade-obj");
+        fadeBtnOUt.addEventListener('click', clickFadeOut);
+        let temp = 1;
+        let bgColor = "rgba(40,202,49,";
+
+        function clickFadeOut() {
+            fadeBtnOUt.disabled = true; //如果按钮在被点击后不可点击，就要在点击事件函数中第一个设置disabled = true
+
+            fadeObj.style.backgroundColor = bgColor + temp + ")";
+
+            temp = temp - 0.01; // 自减 0.01
+            if (temp >= 0) { // 直到透明度为0 就停止淡出渐变，就是要先判断，只有temp大于等于0，才再次调用自身函数重新设置bg颜色，实现淡出渐变
+                console.log(temp);
+                t = setTimeout("clickFadeOut()", 10); // 当间隔启动时间越短，那么函数运行越频繁，同时透明度每次改变幅度值越小，
+                //这样淡出动画就会更自然。以很高的频率把变化的值再重新赋值到bg颜色上，就实现了淡出动画渐变
+                // 当temp=0 时是最后一次执行setTimeout（）函数，小于0 后不再执行了，转而执行 else语句
+            } else {
+                fadeBtnOUt.disabled = false;
+                fadeObj.style.backgroundColor = "rgb(40, 202, 49)";
+                temp = 1;
+                // 第一次淡出动画后，但因为temp已经小于0了，
+                // 所以再点击按钮，运行按钮点击事件函数，不会再执行setTimeout函数，需要重新设置temp=1，这样再点击按钮，才能
+                // 出现第二次淡出动画，在使用 setTimeout函数 让某函数自己多次重复调用自己的，该函数里面可能会有部分程序是执行不到的，
+                // 只有满足一定条件后才被执行，如 else 语句。因为设置了条件，所以该函数clickFadeOut（）不会永远地调用自己。
+                // 像从0开始的秒表计时就需要函数永远地调用自己。
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

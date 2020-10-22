@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Task20-21</title>
+
+</head>
+
+<body>
+    <!-- 当点击按钮 submit-btn 时，在console中输出 name 中的内容
+        在输入过程中，如果按回车键，则同样执行上一条的需求
+        在输入过程中，如果按 ESC 键，则把输入框中的内容清空 -->
+    <input id="name" type="text">
+    <button id="submit-btn">Submit</button>
+
+    <script>
+        const subBtn = document.getElementById("submit-btn");
+        const input = document.getElementById("name");
+        subBtn.addEventListener('click', outputContent);
+        input.addEventListener('change', outputContent)
+
+        // 按 esc 键清空输入框的内容，键的按下同样是一个事件
+        input.addEventListener('keyup', function(e) {
+            if (e.keyCode == 27) { // e 代表事件发生时的按键，在这个事件中 e 是 esc键
+                this.value = '';
+
+            }
+        });
+
+        /*  input.addEventListener("keyup", pressEsc);
+
+         function pressEsc() {
+             realPressEsc(e);
+         }
+
+         function realPressEsc(e) {
+             if (e.keyCode == 27) {
+                 this.value = '';
+
+             }
+         } */
+
+        function outputContent() {
+            let strInput = input.value;
+            if (strInput === "") {
+                // subBtn.disabled = true;
+                console.log("文本框没有输入任何值！");
+            } else {
+                console.log("文本框输入的值为：" + strInput); // 
+                // 这种情况不能阻止用户在文本框全部输入空格这种情况，点击按钮后照样输出但是没有显示文本，因为输入的是空格
+            }
+            input.value = ""; // 点击提交按钮后，文本框清空内容，不这样设置，文本框不会清空内容
+        }
+    </script>
+</body>
+
+</html>

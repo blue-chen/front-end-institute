@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>段落颜色动态修改</title>
+    <style>
+        .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 点击某一个 Li 标签时，将 Li 的背景色显示在 P 标签内，并将 P 标签中的文字颜色设置成 Li 的背景色 -->
+    <ul class="palette">
+        <li style="background-color:crimson"></li>
+        <li style="background-color:bisque"></li>
+        <li style="background-color:blueviolet"></li>
+        <li style="background-color:coral"></li>
+        <li style="background-color:chartreuse"></li>
+        <li style="background-color:darkolivegreen"></li>
+        <li style="background-color:cyan"></li>
+        <li style="background-color:#194738"></li>
+    </ul>
+
+    <p class="color-picker"></p>
+
+    <script>
+        /* var list = document.querySelectorAll("li");
+                                                                                                                                                        for (var i = 0; i < list.length; i++) {
+                                                                                                                                                            list[i].onclick = function(e) { // 事件发生时必然有一个事件对象，现在就是提前为这些li标签设置点击事件函数，当在它们身上发生点击事件时，函数就会启动，将事件对象e作为实参传入，此时事件对象e作用的元素（e.target）就是被点击的li 标签了，使用匿名函数，实参是事件对象e（event），该事件对象可以是点击对象，鼠标暂停对象
+                                                                                                                                                                var t = e.target;
+                                                                                                                                                                var c = t.style.backgroundColor;
+                                                                                                                                                                var p = document.getElementsByClassName("color-picker")[0] // 这个算是重复创建了，其实不应该写在这里创建，而是写在全局区域，创建元素的引用只要创建一次就够了，后面都可以随便使用
+                                                                                                                                                                p.innerHTML = c;
+                                                                                                                                                                p.style.color = c;
+                                                                                                                                                                p.style.backgroundColor = c;
+                                                                                                                                                            }
+                                                                                                                                                        } */
+
+        // 用事件代理 实现这个功能，主要步骤：1、创建父元素的引用，2、设置父元素的点击事件函数，3、形参用到事件对象e
+
+        const paletteUl = document.querySelector(".palette");
+        var p = document.getElementsByClassName("color-picker")[0];
+        paletteUl.onclick = function(e) {
+            let target = e.target; // 获取点击事件作用的元素
+            if (target.nodeName.toLowerCase() == "li") {
+                p.innerHTML = target.style.backgroundColor; // 把表示背景颜色的字符串赋给p元素的内容
+                p.style.color = target.style.backgroundColor;
+                p.style.backgroundColor = target.style.backgroundColor;
+                alert("你点击的li的颜色是：" + target.style.backgroundColor);
+            }
+        }
+    </script>
+</body>
+
+</html>

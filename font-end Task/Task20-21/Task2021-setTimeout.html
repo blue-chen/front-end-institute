@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>黑色方块 setTimeout 实现淡入淡出的动画</title>
+
+</head>
+
+<body>
+    <!-- 点击按钮时，开始改变 fade-obj 的透明度，开始一个淡出（逐渐消失）动画，直到透明度为0
+        在动画过程中，按钮的状态变为不可点击
+        在动画结束后，按钮状态恢复，且文字变成“淡入”
+        在 按钮显示 淡入 的状态时，点击按钮，开始一个“淡入”（逐渐出现）的动画，和上面类似按钮不可点，直到透明度完全不透明
+        淡入动画结束后，按钮文字变为“淡出” -->
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <script>
+        const fadeBtnOUt = document.getElementById("fade-btn");
+        const fadeObj = document.getElementById("fade-obj");
+        fadeBtnOUt.addEventListener('click', clickFadeOut);
+        let temp = 1;
+        let bgColor = "rgba(0,0,0,";
+        let strValueBtn = "";
+        fadeBtnOUt.style.backgroundColor = "orange"; //一开始默认是淡出按钮，按钮背景色是橙色
+
+        function clickFadeOut() {
+            fadeBtnOUt.disabled = true;
+            fadeObj.style.backgroundColor = bgColor + temp + ")";
+            /* 实现思路：点击按钮后，让按钮不可点击，然后用默认的temp= 1设置背景色，获取按钮文字，
+             * 若按钮内容是淡出，则将temp自减 0.01，然后对更新后的temp判断，若>= 0，就调用超时函数来重新运行clickFadeOut函数来更新背景色，
+             * 因为透明度在0到1之间，现在是从1减少到0，当temp小于0 后不再调用超时函数来更新了，因为用负的temp去设置背景色是不对的，
+             * 转而将按钮设置为可点击，然后按钮的文字变成淡入，temp变成0，之前是负数，这是为了下一次点击做准备的。
+             * 现在按钮文字变成了淡入，点击后会执行最外面的else语句（实现淡入动画），这里逻辑也是类似，temp自增，然后对temp
+             * 判断，<=1 就调用超时函数来更新背景色，大于1 时就不调用了，转而让按钮可点击，设置按钮为淡出，让temp等1，这是为了
+             * 下一次点击淡出按钮做准备。可以看到 clickFadeOut（）函数运行时 就是背景色在更新的时候，按钮都是不可点击的，为true*/
+            //console.log("点击了按钮！");
+            strValueBtn = fadeBtnOUt.innerHTML;
+            //console.log(strValueBtn);
+            if (strValueBtn === "淡出") { // if 语句好像是还要你再点击按钮一次，才会判断你的点击的按钮的值是多少
+                temp = temp - 0.01;
+                if (temp >= 0) { // 直到透明度为0 就停止淡出渐变，就是要先判断，只有temp大于等于0，才再次调用自身函数重新设置bg颜色，实现淡出渐变
+                    console.log(temp);
+                    setTimeout("clickFadeOut()", 10); // 当间隔启动时间越短，那么函数运行越频繁，同时透明度每次改变幅度值越小，
+                    //这样淡出动画就会更自然。以很高的频率把变化的值再重新赋值到bg颜色上，就实现了淡出动画渐变
+                    console.log("11111111");
+                } else { // 淡出 动画执行完了，按钮恢复成可点击状态，同时按钮文字变成“淡入”，供下一次点击
+                    console.log("淡入");
+                    fadeBtnOUt.disabled = false;
+                    fadeBtnOUt.innerHTML = "淡入"; // 只执行一次
+                    temp = 0; // 为下次手动点击淡入按钮做准备，需要将temp设置为0，因为之前的temp 是-0.01
+                    // t = setTimeout("clickFadeOut()", 10);
+                    fadeBtnOUt.style.backgroundColor = "green";
+
+                }
+            } else {
+                // fadeBtnOUt.disabled = true;
+                temp = temp + 0.01;
+                if (temp <= 1) {
+                    console.log(temp);
+                    setTimeout("clickFadeOut()", 10);
+                } else {
+                    fadeBtnOUt.disabled = false;
+                    fadeBtnOUt.innerHTML = "淡出"; // 只执行一次
+                    temp = 1; // 为点击淡出按钮做准备，需要将temp设置为1，因为之前的temp是1.01
+                    // t = setTimeout("clickFadeOut()", 10);
+                    fadeBtnOUt.style.backgroundColor = "orange";
+
+
+                }
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

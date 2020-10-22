@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>控制元素的显示和隐藏</title>
+    <style>
+        #company-select {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--   默认是选择School的单选框，当用户选择了 School 的单选框时，显示 School 的下拉选项，隐藏 Company 的下拉选项
+        当用户选择了 Company 的单选框时，显示 Company 的下拉选项，隐藏 School 的下拉选项 -->
+    <label>
+        <input id="school" name="status" type="radio" checked>
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+
+    <select id="school-select">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+    </select>
+
+    <script>
+        const body = document.querySelector("body");
+        const inputs = body.getElementsByTagName("input");
+        const schoolSelect = document.getElementById("school-select");
+        const companySelect = document.getElementById("company-select");
+        console.log("单选框的个数是：" + inputs.length);
+
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener("click", radioClick);
+        }
+
+        function radioClick() {
+
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked === true) { // 只有被选中的才有资格确定它的id 是谁
+                    if (inputs[i].id === "school") {
+                        schoolSelect.style.display = "inline";
+                        companySelect.style.display = "none";
+                        console.log("被选中的是：" + inputs[i].id);
+                        break;
+                    } else {
+                        companySelect.style.display = "inline";
+                        schoolSelect.style.display = "none";
+                        console.log("被选中的是：" + inputs[i].id);
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

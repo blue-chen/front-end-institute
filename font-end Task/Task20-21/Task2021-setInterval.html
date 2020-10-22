@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>setInterval 实现淡入淡出动画</title>
+
+
+</head>
+
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <!--  点击按钮时，开始改变 fade-obj 的透明度，开始一个淡出（逐渐消失）动画，直到透明度为0
+在动画过程中，按钮的状态变为不可点击
+在动画结束后，按钮状态恢复，且文字变成“淡入”
+在 按钮显示 淡入 的状态时，点击按钮，开始一个“淡入”（逐渐出现）的动画，和上面类似按钮不可点，直到透明度完全不透明
+淡入动画结束后，按钮文字变为“淡出” -->
+    <script>
+        const fadeDiv = document.getElementById("fade-obj");
+        const fadeBtn = document.getElementById("fade-btn");
+        fadeBtn.addEventListener("click", myClick);
+        let temp = 1;
+        let bgColor = "rgba(0,0,0,";
+        let strValueBtn = "";
+        fadeBtn.style.backgroundColor = "orange";
+        let t;
+
+        function myClick() {
+            fadeBtn.disabled = true;
+            strValueBtn = fadeBtn.innerHTML;
+            if (strValueBtn === "淡出") { // 将淡入，淡出分别写成两个函数，点击按钮后判断按钮的文字，根据文字执行对应的函数，
+                // 在淡入，淡出函数中设置判断条件，当透明度值小于0 或大于1就用 clearInterval（t）停止淡入，淡出函数的运行，
+                // 并修改按钮的文字，点击状态，背景颜色，temp值，这是为了下一次的点击按钮做准备。实际上可在任何地方
+                //调用clearInterval（t） 
+                t = setInterval("fadeOut()", 10);
+            } else {
+                t = setInterval("fadeIn()", 10);
+            }
+        }
+
+        function fadeOut() {
+            if (temp >= 0) {
+                fadeDiv.style.backgroundColor = bgColor + temp + ")";
+                temp = temp - 0.01;
+                console.log(temp);
+
+            } else {
+                clearInterval(t); // 当temp 小于0 时，就马上停止 fadeOut() 的运行
+                console.log("淡入");
+                fadeBtn.disabled = false;
+                fadeBtn.innerHTML = "淡入"; // 只执行一次
+                temp = 0; // 为下次手动点击淡入按钮做准备，需要将temp设置为0，因为之前的temp 是-0.01
+                // t = setTimeout("clickFadeOut()", 10);
+                fadeBtn.style.backgroundColor = "green";
+            }
+        }
+
+        function fadeIn() {
+            if (temp <= 1) {
+                fadeDiv.style.backgroundColor = bgColor + temp + ")";
+                temp = temp + 0.01;
+                console.log(temp);
+
+            } else {
+                clearInterval(t); // 当temp 大于1时，就马上停止 fadeIn() 的运行,因为t是全局变量，所以在任何地方都可以访问
+                console.log("淡出");
+                fadeBtn.disabled = false;
+                fadeBtn.innerHTML = "淡出"; // 只执行一次
+                temp = 1; // 为下次手动点击淡入按钮做准备，需要将temp设置为0，因为之前的temp 是-0.01
+                // t = setTimeout("clickFadeOut()", 10);
+                fadeBtn.style.backgroundColor = "orange";
+            }
+        }
+    </script>
+</body>
+
+</html>

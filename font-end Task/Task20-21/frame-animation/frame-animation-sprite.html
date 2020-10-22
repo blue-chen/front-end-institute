@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>雪碧图实现帧动画</title>
+    <style>
+        #animation {
+            background-image: url('erik.jpg');
+            width: 480px;
+            height: 480px;
+            border: 2px solid orange;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="animation">
+
+    </div>
+    <button id="btnPlay">播放</button>
+    <button id="btnPause">暂停</button>
+
+    <script>
+        const animation = document.getElementById("animation");
+        const btnPlay = document.getElementById("btnPlay");
+        const btnPause = document.getElementById("btnPause");
+        btnPlay.addEventListener("click", clickPlay);
+        btnPause.addEventListener("click", clickPause);
+        let t;
+        let temp = 0;
+        // let Yvalue = "";
+        window.onload = function() { // 页面第一次加载事件函数
+            t = setInterval("changeImage()", 100);
+        }
+
+        function changeImage() {
+            if (temp >= -8160) { // 从temp等于0 开始判断，要先判断才能赋值，这个更保险，不容易出错，已经模拟程序过了
+                animation.style.backgroundPosition = "0px " + temp + "px"; // 连续不断的赋值，形成了动画
+                temp -= 480; // 为下一次赋值做准备
+            } else { // 到了动画结束的时候，结束changeImage函数的运行
+                clearInterval(t);
+                temp = 0; // 重置 temp ，为再一次产生动画做准备，这是必要条件
+            }
+
+        }
+
+        function clickPlay() {
+            t = setInterval("changeImage()", 100); // 为什么页面加载后图片动了后，再点击 播放按钮，本来setInterval函数应该启动（确实也启动了），
+            //changeImage()函数应该工作（确实工作了）,然后动画再次出现的。但实际上动画却一动不动。你就按它的执行顺序走会发现原来temp的值自从
+            // 第一次动画结束后就是小于 -8160了，所以changeImage（）函数运行后马上执行else语句，clearInterval(t)，
+            //把changeImage()函数自己给停了，所以changeImage函数刚启动就停止了。这种多次循环运行某函数的，一定要对其中被修改
+            //的变量留意，这些变量在函数运行完后一般都要重置它们的值。
+        }
+
+        function clickPause() { //点击暂停按钮后，changeImage在运行上一次后就停下来了，下一次（此后）不运行。函数的运行是不可打断的，不是说
+            //你在changeImage函数运行到一半时，说停止运行changeImage函数，它就运行到一半停下来。
+            //setInterval函数让 changeImage函数隔 100ms 运行一次，而程序运行都是很快的，用时几乎为0，
+            //在下一次changeImage函数运行前，这一次的changeImage函数早就运行完了。
+            // 为什么点击暂停后，动画停下来，再点击播放，动画继续从刚才暂停的地方播放？因为这其中temp的值都没有被
+            // 破坏或者重置，一直按照正常的节奏来变化，点击暂停按钮，只是让changeImage函数停止运行，当点击播放按钮后，
+            // changeImage函数再次运行，依然对temp的值进行判断，temp的值是上一次changeImage函数运行后正常变化产生的
+            // 新值，满足temp >= -8160 条件，然后被赋值给position，于是新的画面就产生了。
+            clearInterval(t);
+        }
+    </script>
+</body>
+
+</html>
